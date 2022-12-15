@@ -1,12 +1,12 @@
 import { Avatar, Box, Flex, keyframes } from "@chakra-ui/react";
 
-export default function HeaderTop({ src }) {
-  const size = "120px";
-  const color = "black";
+export default function HeaderCategoryCards({ src }) {
+  const size = "175px";
+  const color = "#fbd309";
 
   const pulseRing = keyframes`
 	0% {
-    transform: scale(0.33);
+    transform: scale(0.30);
   }
   40%,
   50% {
