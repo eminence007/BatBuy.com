@@ -27,7 +27,7 @@ function StatsCard(props) {
     >
       <Flex justifyContent={"space-between"}>
         <Box pl={{ base: 2, md: 4 }}>
-          <StatLabel fontWeight={"medium"} isTruncated>
+          <StatLabel color="white" fontWeight={"medium"} isTruncated>
             {title}
           </StatLabel>
           <StatNumber fontSize={"2xl"} fontWeight={"medium"}>
@@ -62,6 +62,7 @@ export default function MidDetails() {
         fontSize={"4xl"}
         py={10}
         fontWeight={"bold"}
+        color="#fcde04"
       >
         Become a <span style={{ color: "white" }}>Bat Member</span>, Get your
         products delievered <span style={{ color: "white" }}>FREE</span>.
@@ -83,7 +84,7 @@ export default function MidDetails() {
           icon={<GoLocation size={"3em"} />}
         />
       </SimpleGrid>
-      {/* <Divider mt={12} mb={12} /> */}
+      <Divider mt={12} mb={0} />
     </Box>
   );
 }

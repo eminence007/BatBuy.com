@@ -1,6 +1,6 @@
 import React from "react";
 import "./MidProductCarousel.css";
-import ProductCard from "../Products/ProductCard";
+import ProductCard from "./ProductCard";
 import { useRef } from "react";
 
 const products = [
@@ -123,16 +123,16 @@ const products = [
   },
   {
     isNew: true,
-    id: 8,
-    image: "https://m.media-amazon.com/images/I/719AiBIW+FL._AC_UY218_.jpg",
-    url: "https://www.amazon.com/Microsoft-Surface-Laptop-Touch-Screen-Memory/dp/B07YNK9T9Z/ref=sr_1_8?crid=177RUHTKQSP6I&keywords=laptops+black&qid=1671008165&sprefix=laptops+blac%2Caps%2C448&sr=8-8",
-    name: 'Microsoft Surface Laptop 3 – 13.5" Touch-Screen – Intel Core i5 - 8GB Memory - 256GB Solid State Drive – Matte Black',
+    id: 12,
+    image: "https://m.media-amazon.com/images/I/71CuLL3QTzL._AC_UY218_.jpg",
+    url: "https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_mtf_aps_sr_pg1_1?ie=UTF8&adId=A07837193BUQD5CQUJABW&qualifier=1671008165&id=982970843785837&widgetName=sp_mtf&url=%2FWindows-EcoHero-i3-5005U-Computer-Functional%2Fdp%2FB0BG4SNFSD%2Fref%3Dsr_1_12_sspa%3Fcrid%3D177RUHTKQSP6I%26keywords%3Dlaptops%2Bblack%26qid%3D1671008165%26sprefix%3Dlaptops%2Bblac%252Caps%252C448%26sr%3D8-12-spons%26psc%3D1",
+    name: "Windows 11 Laptop, EcoHero 15.6 inches FHD(1920 x 1080) IPS Display, Intel Core i3-5005U, 12GB RAM and 512GB SSD Laptop Computer, 2.4G/5G WiFi, BT4.2 and RJ45, Full Functional Type C, Space Gray",
     name_url:
-      "https://www.amazon.com/Microsoft-Surface-Laptop-Touch-Screen-Memory/dp/B07YNK9T9Z/ref=sr_1_8?crid=177RUHTKQSP6I&keywords=laptops+black&qid=1671008165&sprefix=laptops+blac%2Caps%2C448&sr=8-8",
-    price: 899,
+      "https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_mtf_aps_sr_pg1_1?ie=UTF8&adId=A07837193BUQD5CQUJABW&qualifier=1671008165&id=982970843785837&widgetName=sp_mtf&url=%2FWindows-EcoHero-i3-5005U-Computer-Functional%2Fdp%2FB0BG4SNFSD%2Fref%3Dsr_1_12_sspa%3Fcrid%3D177RUHTKQSP6I%26keywords%3Dlaptops%2Bblack%26qid%3D1671008165%26sprefix%3Dlaptops%2Bblac%252Caps%252C448%26sr%3D8-12-spons%26psc%3D1",
+    price: 349,
     price_url:
-      "https://www.amazon.com/Microsoft-Surface-Laptop-Touch-Screen-Memory/dp/B07YNK9T9Z/ref=sr_1_8?crid=177RUHTKQSP6I&keywords=laptops+black&qid=1671008165&sprefix=laptops+blac%2Caps%2C448&sr=8-8",
-    rating: 4.5,
+      "https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_mtf_aps_sr_pg1_1?ie=UTF8&adId=A07837193BUQD5CQUJABW&qualifier=1671008165&id=982970843785837&widgetName=sp_mtf&url=%2FWindows-EcoHero-i3-5005U-Computer-Functional%2Fdp%2FB0BG4SNFSD%2Fref%3Dsr_1_12_sspa%3Fcrid%3D177RUHTKQSP6I%26keywords%3Dlaptops%2Bblack%26qid%3D1671008165%26sprefix%3Dlaptops%2Bblac%252Caps%252C448%26sr%3D8-12-spons%26psc%3D1",
+    rating: 4.9,
   },
   {
     isNew: true,
@@ -173,16 +173,16 @@ const products = [
   },
   {
     isNew: true,
-    id: 12,
-    image: "https://m.media-amazon.com/images/I/71CuLL3QTzL._AC_UY218_.jpg",
-    url: "https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_mtf_aps_sr_pg1_1?ie=UTF8&adId=A07837193BUQD5CQUJABW&qualifier=1671008165&id=982970843785837&widgetName=sp_mtf&url=%2FWindows-EcoHero-i3-5005U-Computer-Functional%2Fdp%2FB0BG4SNFSD%2Fref%3Dsr_1_12_sspa%3Fcrid%3D177RUHTKQSP6I%26keywords%3Dlaptops%2Bblack%26qid%3D1671008165%26sprefix%3Dlaptops%2Bblac%252Caps%252C448%26sr%3D8-12-spons%26psc%3D1",
-    name: "Windows 11 Laptop, EcoHero 15.6 inches FHD(1920 x 1080) IPS Display, Intel Core i3-5005U, 12GB RAM and 512GB SSD Laptop Computer, 2.4G/5G WiFi, BT4.2 and RJ45, Full Functional Type C, Space Gray",
+    id: 16,
+    image: "https://m.media-amazon.com/images/I/61eZSlBY-cL._AC_UY218_.jpg",
+    url: "https://www.amazon.com/HP-x360-Touchscreen-Quad-Core-Bluetooth/dp/B07VPPM6YM/ref=sr_1_16?crid=177RUHTKQSP6I&keywords=laptops+black&qid=1671008165&sprefix=laptops+blac%2Caps%2C448&sr=8-16",
+    name: 'HP Envy x360 2-in-1 15.6" Touch-Screen Laptop (AMD Ryzen 5, 8GB RAM, 256GB Solid State Drive, Nightfall Black)',
     name_url:
-      "https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_mtf_aps_sr_pg1_1?ie=UTF8&adId=A07837193BUQD5CQUJABW&qualifier=1671008165&id=982970843785837&widgetName=sp_mtf&url=%2FWindows-EcoHero-i3-5005U-Computer-Functional%2Fdp%2FB0BG4SNFSD%2Fref%3Dsr_1_12_sspa%3Fcrid%3D177RUHTKQSP6I%26keywords%3Dlaptops%2Bblack%26qid%3D1671008165%26sprefix%3Dlaptops%2Bblac%252Caps%252C448%26sr%3D8-12-spons%26psc%3D1",
-    price: 349,
+      "https://www.amazon.com/HP-x360-Touchscreen-Quad-Core-Bluetooth/dp/B07VPPM6YM/ref=sr_1_16?crid=177RUHTKQSP6I&keywords=laptops+black&qid=1671008165&sprefix=laptops+blac%2Caps%2C448&sr=8-16",
+    price: 592,
     price_url:
-      "https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_mtf_aps_sr_pg1_1?ie=UTF8&adId=A07837193BUQD5CQUJABW&qualifier=1671008165&id=982970843785837&widgetName=sp_mtf&url=%2FWindows-EcoHero-i3-5005U-Computer-Functional%2Fdp%2FB0BG4SNFSD%2Fref%3Dsr_1_12_sspa%3Fcrid%3D177RUHTKQSP6I%26keywords%3Dlaptops%2Bblack%26qid%3D1671008165%26sprefix%3Dlaptops%2Bblac%252Caps%252C448%26sr%3D8-12-spons%26psc%3D1",
-    rating: 4.9,
+      "https://www.amazon.com/HP-x360-Touchscreen-Quad-Core-Bluetooth/dp/B07VPPM6YM/ref=sr_1_16?crid=177RUHTKQSP6I&keywords=laptops+black&qid=1671008165&sprefix=laptops+blac%2Caps%2C448&sr=8-16",
+    rating: 4.6,
   },
 ];
 
@@ -204,6 +204,9 @@ const MidProductCarousel = () => {
   };
   return (
     <div className="product-carousel">
+      <h1 id="newProd">
+        <span>New Additions</span> to the Arsenal...
+      </h1>
       <button className="pre-btn" onClick={btnpressprev}>
         <p>&lt;</p>
       </button>
@@ -221,6 +224,7 @@ const MidProductCarousel = () => {
               image={el.image}
               rating={el.rating}
               isNew={el.isNew}
+              id={el.id}
             />
           );
         })}

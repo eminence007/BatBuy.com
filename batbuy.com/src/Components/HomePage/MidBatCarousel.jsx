@@ -35,6 +35,7 @@ export default function MidBatCarousel() {
   // buttons as the screen size changes
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
+  <span></span>;
 
   // This list contains all the data for carousels
   // This can be static or loaded from a server
@@ -50,8 +51,8 @@ export default function MidBatCarousel() {
       image: "https://wallpaperaccess.com/full/7168503.jpg",
     },
     {
-      title: "Shop Now!",
-      text: "",
+      title: "Join the Team,",
+      text: "Become a Bat Member today!",
       image: "https://wallpaperaccess.com/full/7168506.jpg",
     },
   ];
@@ -121,16 +122,14 @@ export default function MidBatCarousel() {
                 w={"full"}
                 maxW={"lg"}
                 position="absolute"
-                top="33%"
-                right="20%"
+                top="29%"
+                right="28%"
                 transform="translate(0, -50%)"
               >
                 <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
                   {card.title}
                 </Heading>
-                <Text fontSize={{ base: "md", lg: "lg" }}>
-                  {card.text}
-                </Text>
+                <Text fontSize={{ base: "md", lg: "lg" }}>{card.text}</Text>
               </Stack>
             </Container>
           </Box>

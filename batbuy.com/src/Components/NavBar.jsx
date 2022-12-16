@@ -31,13 +31,21 @@ import {
   Search2Icon,
 } from "@chakra-ui/icons";
 
+import { GiBatMask } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
+
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
+  const navigate = useNavigate();
 
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
+        position="fixed"
+        zIndex="999"
+        top="0"
+        w="100%"
+        bg={useColorModeValue("#0f0b06", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
         minH={"80px"}
         py={{ base: 2 }}
@@ -62,13 +70,12 @@ export default function NavBar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}
-          >
-            <Image h="60px" src="/BAT-BUY_logo.png" />
-          </Text>
+          <Image
+            onClick={() => navigate(`/`)}
+            h="60px"
+            src="/altbatman_logo.png"
+            cursor="pointer"
+          />
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
@@ -80,33 +87,28 @@ export default function NavBar() {
           justify={"flex-end"}
           direction={"row"}
           spacing={6}
+          alignItems="center"
         >
-          <Link href="#" isExternal>
+          <Link fontSize={"2xl"} fontWeight="500" color="white" href="#">
             Cart
           </Link>
+          <GiBatMask fontSize="30px" color="white" />
           <Button
             as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-            href={"#"}
-          >
-            Login
-          </Button>
-          <Button
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize={"sm"}
+            display={{ base: "block", md: "inline-flex" }}
+            fontSize={"xl"}
             fontWeight={600}
             color={"white"}
-            bg={"#010101"}
+            bg={"#0f0b06"}
             href={"#"}
+            variant="outline"
             _hover={{
               bg: "white",
-              color: "#010101",
+              color: "#0f0b06",
               border: "1px solid black",
             }}
           >
-            Sign Up
+            Login
           </Button>
         </Stack>
       </Flex>
@@ -119,50 +121,21 @@ export default function NavBar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("gray.600", "gray.200");
+  const linkColor = useColorModeValue("black", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4}>
-      {/* {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
-            <Popover trigger={'hover'} placement={'bottom-start'}>
-              <PopoverTrigger>
-                <Link
-                  p={2}
-                  href={navItem.href ?? '#'}
-                  fontSize={'sm'}
-                  fontWeight={500}
-                  color={linkColor}
-                  _hover={{
-                    textDecoration: 'none',
-                    color: linkHoverColor,
-                  }}>
-                  {navItem.label}
-                </Link>
-              </PopoverTrigger>
-  
-              {navItem.children && (
-                <PopoverContent
-                  border={0}
-                  boxShadow={'xl'}
-                  bg={popoverContentBgColor}
-                  p={4}
-                  rounded={'xl'}
-                  minW={'sm'}>
-                  <Stack>
-                    {navItem.children.map((child) => (
-                      <DesktopSubNav key={child.label} {...child} />
-                    ))}
-                  </Stack>
-                </PopoverContent>
-              )}
-            </Popover>
-          </Box>
-        ))} */}
+    <Stack display="flex" alignItems="center" direction={"row"} spacing={4}>
       <Menu>
-        <MenuButton as={Button} leftIcon={<HamburgerIcon />}>
+        <MenuButton
+          bg="#0f0b06"
+          color="white"
+          fontSize="2xl"
+          as={Button}
+          leftIcon={<HamburgerIcon />}
+          _hover={{ bg: "#0f0b06", color: "white" }}
+        >
           MENU
         </MenuButton>
         <MenuList>
@@ -175,12 +148,17 @@ const DesktopNav = () => {
       </Menu>
 
       <Stack spacing={3}>
-        <InputGroup>
+        <InputGroup ml="12" w="199%">
           <InputRightElement
             pointerEvents="none"
-            children={<Search2Icon color="gray.300" />}
+            children={<Search2Icon color="gray.800" />}
           />
-          <Input type="search" placeholder="Search Bat Buy" />
+          <Input
+            bg="white"
+            color="gray.800"
+            type="search"
+            placeholder="Search Bat Buy"
+          />
         </InputGroup>
       </Stack>
     </Stack>
@@ -197,18 +175,18 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
       rounded={"md"}
       _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
     >
-      <Stack direction={"row"} align={"center"}>
+      <Stack>
         <Box>
-          <Text
+          {/* <Text
             transition={"all .3s ease"}
             _groupHover={{ color: "pink.400" }}
             fontWeight={500}
           >
             {label}
-          </Text>
-          <Text fontSize={"sm"}>{subLabel}</Text>
+          </Text> */}
+          {/* <Text fontSize={"sm"}>{subLabel}</Text> */}
         </Box>
-        <Flex
+        {/* <Flex
           transition={"all .3s ease"}
           transform={"translateX(-10px)"}
           opacity={0}
@@ -218,7 +196,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           flex={1}
         >
           <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
-        </Flex>
+        </Flex> */}
       </Stack>
     </Link>
   );
@@ -227,7 +205,9 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 const MobileNav = () => {
   return (
     <Stack
-      bg={useColorModeValue("white", "gray.800")}
+      position="fixed"
+      top="0"
+      bg={useColorModeValue("#0f0b06", "gray.800")}
       p={4}
       display={{ md: "none" }}
     >
