@@ -3,7 +3,7 @@ import { Image, Box } from "@chakra-ui/react";
 
 export const HeaderImage = () => {
   return (
-    <Box boxSize="full">
+    <Box paddingTop="80px" boxSize="full">
       <Image
         src="https://www.redwolf.in/image/cache/catalog/banners/official-merch/batman-merchandise-india1-1920-1920x350.jpg"
         alt="Batman"

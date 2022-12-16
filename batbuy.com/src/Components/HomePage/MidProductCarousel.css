@@ -19,7 +19,7 @@
   width: 60px;
   height: 60px;
   position: absolute;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
   background-color: none;
   display: flex;
@@ -47,6 +47,16 @@
   border-radius: 5px;
 }
 
-h5 {
+#newProd {
   color: white;
+  font-size: 30px;
+  font-weight: 500;
+  padding-left: 15px;
+  font-family: sans-serif;
+  padding-bottom: 10px;
+}
+
+#newProd span {
+  color: #fcde04;
+  font-weight: 600;
 }

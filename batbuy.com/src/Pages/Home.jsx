@@ -5,8 +5,11 @@ import MidTop from "../Components/HomePage/MidTop";
 import MidBatCarousel from "../Components/HomePage/MidBatCarousel";
 import MidDetails from "../Components/HomePage/MidDetails";
 import MidProductCarousel from "../Components/HomePage/MidProductCarousel";
+import BottomDetails from "../Components/HomePage/BottomDetails";
+import BottomNewsletter from "../Components/HomePage/BottomNewsletter";
+import Footer from "../Components/HomePage/Footer";
 
-export const Home = () => {
+const Home = () => {
   return (
     <div>
       <HeaderImage />
@@ -14,7 +17,12 @@ export const Home = () => {
       <MidTop />
       <MidBatCarousel />
       <MidDetails />
-      <MidProductCarousel/>
+      <MidProductCarousel />
+      <BottomDetails />
+      <BottomNewsletter />
+      <Footer />
     </div>
   );
 };
+
+export default Home;

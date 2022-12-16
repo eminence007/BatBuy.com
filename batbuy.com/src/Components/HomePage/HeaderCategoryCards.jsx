@@ -1,8 +1,11 @@
 import { Avatar, Box, Flex, keyframes } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function HeaderCategoryCards({ src }) {
+export default function HeaderCategoryCards({ src, category }) {
   const size = "175px";
   const color = "#fbd309";
+
+  const navigate = useNavigate();
 
   const pulseRing = keyframes`
 	0% {
@@ -37,7 +40,17 @@ export default function HeaderCategoryCards({ src }) {
         animation: `2.25s ${pulseRing} cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite`,
       }}
     >
-      <Avatar src={src} size="full" position="absolute" top={0} />
+      <Avatar
+        onClick={() => {
+          navigate(`/products/${category}`);
+        }}
+        href={`/products/${category}`}
+        src={src}
+        size="full"
+        position="absolute"
+        top={0}
+        cursor="pointer"
+      />
     </Box>
   );
 }
