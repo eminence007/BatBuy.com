@@ -1,4 +1,5 @@
 import AllRoutes from "./Components/AllRoutes";
+import Footer from "./Components/HomePage/Footer";
 import NavBar from "./Components/NavBar";
 import { Home } from "./Pages/Home";
 
