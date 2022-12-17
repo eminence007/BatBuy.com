@@ -20,7 +20,6 @@ const Home = () => {
       <MidProductCarousel />
       <BottomDetails />
       <BottomNewsletter />
-      <Footer />
     </div>
   );
 };

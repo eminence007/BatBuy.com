@@ -9,6 +9,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 function Rating({ ratings }) {
   return (
@@ -32,14 +33,14 @@ function Rating({ ratings }) {
             );
           }
           return (
-            <BsStar color="##fcde04" key={i} style={{ marginLeft: "1" }} />
+            <BsStar color="#fcde04" key={i} style={{ marginLeft: "1" }} />
           );
         })}
     </Box>
   );
 }
 
-function ProductCardNew({ name, image, price, ratings, categories }) {
+function ProductCardNew({ name, image, price, ratings, categories, id }) {
   return (
     <Box>
       {/* <Divider mt={12} mb={12} /> */}
@@ -55,66 +56,69 @@ function ProductCardNew({ name, image, price, ratings, categories }) {
           textAlign="center"
           pt="5px"
         >
-          {/* {isNew && (
-            <Circle
-              size="10px"
-              position="absolute"
-              top={2}
-              right={2}
-              bg="red.200"
-            />
-          )} */}
+          <Link to={`/product-details/${id}`}>
+            <Box>
+              <Image
+                h="200px"
+                p="10px"
+                src={image}
+                alt={`Picture of ${name}`}
+                roundedTop="lg"
+              />
 
-          <Image
-            h="200px"
-            p="10px"
-            src={image}
-            alt={`Picture of ${name}`}
-            roundedTop="lg"
-          />
-
-          <Box p="6">
-            {/* <Box d="flex" alignItems="baseline">
+              <Box p="6">
+                {/* <Box d="flex" alignItems="baseline">
               {isNew && (
                 <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
                   New
                 </Badge>
               )}
             </Box> */}
-            <Flex mt="1" justifyContent="space-between" alignContent="center">
-              <Box
-                noOfLines={2}
-                fontSize="2xl"
-                fontWeight="semibold"
-                as="h4"
-                lineHeight="tight"
-                isTruncated
-              >
-                {name}
-              </Box>
-            </Flex>
+                <Flex
+                  mt="1"
+                  justifyContent="space-between"
+                  alignContent="center"
+                >
+                  <Box
+                    noOfLines={2}
+                    fontSize="2xl"
+                    fontWeight="semibold"
+                    as="h4"
+                    lineHeight="tight"
+                    isTruncated
+                  >
+                    {name}
+                  </Box>
+                </Flex>
 
-            <Flex justifyContent="space-between" alignContent="center">
-              <Rating ratings={ratings} />
-              <Box fontSize="2xl" color={useColorModeValue("#0f0b06", "white")}>
-                <Box as="span" color={"#0f0b06"} fontSize="lg">
-                  $
-                </Box>
-                {price.toFixed(2)}
+                <Flex justifyContent="space-between" alignContent="center">
+                  <Rating ratings={ratings} />
+                  <Box
+                    fontSize="2xl"
+                    color={useColorModeValue("#0f0b06", "white")}
+                  >
+                    <Box as="span" color={"#0f0b06"} fontSize="lg">
+                      $
+                    </Box>
+                    {price.toFixed(2)}
+                  </Box>
+                </Flex>
               </Box>
-            </Flex>
+            </Box>
+          </Link>
+          <Box>
+            <Button
+              textAlign="center"
+              mb="5"
+              mx="1"
+              px="2"
+              bg="#fbd309"
+              color="black"
+              size="md"
+            >
+              Add to Cart
+            </Button>
           </Box>
-          <Button
-            textAlign="center"
-            mb="5"
-            mx="1"
-            px="2"
-            bg="#fbd309"
-            color="black"
-            size="md"
-          >
-            Add to Cart
-          </Button>
         </Box>
       </Flex>
     </Box>

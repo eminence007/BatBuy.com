@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { useParams, Link, useSearchParams } from "react-router-dom";
-import { Box } from "@chakra-ui/react";
 import axios from "axios";
 import ProductContainer from "../Components/Product/ProductContainer";
-import ProductSidebar from "../Components/Product/ProductSidebar";
 import { Flex } from "@chakra-ui/react";
-import Footer from "../Components/HomePage/Footer";
 
 const getCurrentPageUrl = (value) => {
   value = Number(value);
@@ -22,11 +19,11 @@ const getCurrentPageUrl = (value) => {
 
 function getUrl(url, sort, orderBy, filterBy) {
   if (sort && orderBy && filterBy) {
-    url = `${url}&_sort=${sort}&_order=${orderBy}&category=${filterBy}`;
+    url = `${url}&_sort=${sort}&_order=${orderBy}${filterBy}`;
   } else if (sort && orderBy) {
     url = `${url}&_sort=${sort}&_order=${orderBy}`;
   } else if (filterBy) {
-    url = `${url}&category=${filterBy}`;
+    url = `${url}${filterBy}`;
   }
 
   return url;
@@ -43,19 +40,11 @@ const Products = () => {
   //for sorting
   const [orderBy, setOrderBy] = React.useState("");
   const [sort, setSort] = React.useState("");
-  const [limit, setLimit] = React.useState(8);
-  //for limit products per page
-  // const sort = "price";
+  const [limit, setLimit] = React.useState(16);
+
   //for filtering through categories
   const [filterBy, setFilterBy] = React.useState("");
-
-  //   const getTotalCount = () => {
-  //     axios.get(`http://localhost:8080/products/${category}`)
-  //         .then(res => {
-  //             setTotalCount(res.data.length)
-  //         })
-  //         .catch(err => console.log(err))
-  // }
+  const [filterChange, setFilterChange] = useState({});
 
   React.useEffect(() => {
     let apiUrl = getUrl(
@@ -94,7 +83,7 @@ const Products = () => {
   console.log(data);
   console.log(totalCount);
 
-  const handleSort = (val) => {
+  const handleSortAndLimit = (val) => {
     // setLoading(true);
 
     switch (val) {
@@ -118,22 +107,6 @@ const Products = () => {
           setOrderBy("desc");
         }
         break;
-
-      default: {
-        setSort("");
-        setOrderBy("");
-      }
-    }
-  };
-
-  const handleLimit = (val) => {
-    switch (val) {
-      case "8pp":
-        {
-          setLimit(8);
-        }
-        break;
-
       case "12pp":
         {
           setLimit(12);
@@ -153,23 +126,88 @@ const Products = () => {
         break;
 
       default: {
-        setLimit(8);
+        setSort("");
+        setOrderBy("");
+        setLimit(12);
       }
     }
+  };
+
+  // const handleLimit = (val) => {
+  //   switch (val) {
+  //     case "8pp":
+  //       {
+  //         setLimit(8);
+  //       }
+  //       break;
+
+  //     case "12pp":
+  //       {
+  //         setLimit(12);
+  //       }
+  //       break;
+
+  //     case "16pp":
+  //       {
+  //         setLimit(16);
+  //       }
+  //       break;
+
+  //     case "20pp":
+  //       {
+  //         setLimit(20);
+  //       }
+  //       break;
+
+  //     default: {
+  //       setLimit(8);
+  //     }
+  //   }
+  // };
+
+  const handleFilterChange = (val1, val2) => {
+    console.log("x", val1);
+    console.log("y", val2);
+    const add_filter = val1;
+    const check = val2;
+    let obj = { ...filterChange };
+    obj[add_filter] = check;
+
+    let filterStr = "";
+
+    for (let key in obj) {
+      if (obj[key]) {
+        if (
+          key === "asus" ||
+          key === "dell" ||
+          key === "hp" ||
+          key === "microsoft" ||
+          key === "ecohero" ||
+          key === "samsung" ||
+          key === "lg" ||
+          key === "msi" ||
+          key === "lenovo"
+        ) {
+          filterStr += `&brand=${key}`;
+        }
+      }
+    }
+    setFilterBy(filterStr);
+    setFilterChange(obj);
   };
 
   return (
     <>
       <Flex>
-        <ProductSidebar />
         <ProductContainer
           data={data}
           totalCount={totalCount}
           page={page}
           limit={limit}
           setPage={setPage}
-          handleSort={handleSort}
-          handleLimit={handleLimit}
+          handleSortAndLimit={handleSortAndLimit}
+          // handleLimit={handleLimit}
+          handleFilterChange={handleFilterChange}
         />
       </Flex>
     </>
@@ -177,17 +215,3 @@ const Products = () => {
 };
 
 export default Products;
-
-//Select Sort
-
-{
-  /* <Stack w="xs" display="flex" direction="row" alignItems="center" spacing={3}>
-<label>Sort By:</label>
-  <Select width="60%"  icon={<MdArrowDropDown />} placeholder="Customer Ratings">
-  <option value='option1'>Price Low to High</option>
-  <option value='option2'>Price High to Low</option>
-  <option value='option3'>Ratings Low to High</option>
-  <option value='option3'>Rating High to Low</option>
-  </Select>
-</Stack> */
-}

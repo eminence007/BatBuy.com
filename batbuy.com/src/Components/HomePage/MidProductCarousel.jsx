@@ -110,16 +110,18 @@ const products = [
   },
   {
     isNew: true,
-    id: 7,
-    image: "https://m.media-amazon.com/images/I/61r9ZvR-vqL._AC_UY218_.jpg",
-    url: "https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_mtf_aps_sr_pg1_1?ie=UTF8&adId=A008333714AVFYMPH54WB&qualifier=1671008165&id=982970843785837&widgetName=sp_mtf&url=%2FComputer-Adjustable-Foldable-Portable-191280029512%2Fdp%2FB09KRHWTMZ%2Fref%3Dsr_1_7_sspa%3Fcrid%3D177RUHTKQSP6I%26keywords%3Dlaptops%2Bblack%26qid%3D1671008165%26sprefix%3Dlaptops%2Bblac%252Caps%252C448%26sr%3D8-7-spons%26psc%3D1%26smid%3DA2UHWCRWCRB55R",
-    name: "Laptop Desk, Computer Tray for Bed Laptop Table Adjustable Lap Desks for Eating Working Study Foldable and Portable (Black) (191280029512)",
+    category: "macbook",
+    id: 408,
+    image: "https://m.media-amazon.com/images/I/61L5QgPvgqL._AC_UY218_.jpg",
+    url: "https://www.amazon.com/Apple-MacBook-13-inch-256GB-Storage/dp/B0B488MSTG/ref=sr_1_9?keywords=macbook&qid=1671265823&s=tv&sr=1-9-catcorr",
+    name: "Apple MacBook Pro M2 Chip (13-inch, 16GB RAM, 256GB SSD Storage) - Space Gray (2022 Model) - Z16R0005S",
+    details: "",
     name_url:
-      "https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_mtf_aps_sr_pg1_1?ie=UTF8&adId=A008333714AVFYMPH54WB&qualifier=1671008165&id=982970843785837&widgetName=sp_mtf&url=%2FComputer-Adjustable-Foldable-Portable-191280029512%2Fdp%2FB09KRHWTMZ%2Fref%3Dsr_1_7_sspa%3Fcrid%3D177RUHTKQSP6I%26keywords%3Dlaptops%2Bblack%26qid%3D1671008165%26sprefix%3Dlaptops%2Bblac%252Caps%252C448%26sr%3D8-7-spons%26psc%3D1%26smid%3DA2UHWCRWCRB55R",
-    price: 26,
+      "https://www.amazon.com/Apple-MacBook-13-inch-256GB-Storage/dp/B0B488MSTG/ref=sr_1_9?keywords=macbook&qid=1671265823&s=tv&sr=1-9-catcorr",
+    price: 1458,
     price_url:
-      "https://www.amazon.com/gp/slredirect/picassoRedirect.html/ref=pa_sp_mtf_aps_sr_pg1_1?ie=UTF8&adId=A008333714AVFYMPH54WB&qualifier=1671008165&id=982970843785837&widgetName=sp_mtf&url=%2FComputer-Adjustable-Foldable-Portable-191280029512%2Fdp%2FB09KRHWTMZ%2Fref%3Dsr_1_7_sspa%3Fcrid%3D177RUHTKQSP6I%26keywords%3Dlaptops%2Bblack%26qid%3D1671008165%26sprefix%3Dlaptops%2Bblac%252Caps%252C448%26sr%3D8-7-spons%26psc%3D1%26smid%3DA2UHWCRWCRB55R",
-    rating: 4.7,
+      "https://www.amazon.com/Apple-MacBook-13-inch-256GB-Storage/dp/B0B488MSTG/ref=sr_1_9?keywords=macbook&qid=1671265823&s=tv&sr=1-9-catcorr",
+    ratings: 4.3,
   },
   {
     isNew: true,
