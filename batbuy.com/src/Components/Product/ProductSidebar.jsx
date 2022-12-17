@@ -403,7 +403,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
             </>
           )}
         </AccordionItem>
-{/* 
+        {/* 
         <AccordionItem>
           {({ isExpanded }) => (
             <>
