@@ -3,11 +3,9 @@ import { Center, Button } from "@chakra-ui/react";
 import { BsCaretLeft, BsCaretRight } from "react-icons/bs";
 
 export const Pagination = ({ totalCount, current, onChange, limit }) => {
-  const initialFocusRef = React.useRef();
-
   return (
     <div>
-      <Center gap="15px" my="10px" alignItems="center">
+      <Center gap="15px" my="10" alignItems="center">
         <Button
           colorScheme="yellow"
           onClick={() => onChange(current - 1)}
@@ -15,19 +13,10 @@ export const Pagination = ({ totalCount, current, onChange, limit }) => {
         >
           <BsCaretLeft />
         </Button>
-        {/* <Center
-          borderTop="2px solid #fcde04"
-          borderBottom="2px solid #fcde04"
-          px="10px"
-          bg="black"
-          color="#fcde04"
-        >
-          {current}
-        </Center> */}
+
         <Center>
           {new Array(Math.ceil(totalCount / limit)).fill(0).map((a, i) => (
             <Center
-              initialFocusRef={current === i + 1}
               border="1px solid #fcde04"
               borderRadius="2px"
               cursor={"pointer"}
