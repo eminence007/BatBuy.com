@@ -66,7 +66,7 @@ export default function ProductDetails() {
   const handleProduct = () => {
     setLoader(true);
     axios
-      .get(`https://crazy-dove-veil.cyclic.app/products/${id}`)
+      .get(`http://localhost:8080/products/${id}`)
       .then((res) => {
         setProductDetails(res.data);
         setLoader(false);

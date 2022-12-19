@@ -9,9 +9,6 @@ import {
   Icon,
   Image,
   Link,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
@@ -23,6 +20,11 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+  PopoverArrow,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -33,11 +35,24 @@ import {
 } from "@chakra-ui/icons";
 
 import { GiBatMask } from "react-icons/gi";
-import { useNavigate } from "react-router-dom";
+import { AiOutlineLogout } from "react-icons/ai";
+import { TbPremiumRights, TbZoomMoney } from "react-icons/tb";
+import { FaDonate } from "react-icons/fa";
+
+import { BsThreeDotsVertical, BsChatSquareQuote } from "react-icons/bs";
+import { RiShutDownLine, RiRestartLine, RiFileShredLine } from "react-icons/ri";
+import { BsPerson } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
+
+import { useNavigate, Link as RouteLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../Contexts/AuthContext";
 
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
+  const { batUser, login, logout, isAuth } = useContext(AuthContext);
+  console.log("isAuth:", isAuth);
 
   return (
     <Box>
@@ -90,28 +105,117 @@ export default function NavBar() {
           spacing={6}
           alignItems="center"
         >
-          <Link fontSize={"2xl"} fontWeight="500" color="white" href="#">
-            Cart
-          </Link>
-          <GiBatMask fontSize="30px" color="white" />
-          <Button
-            as={"a"}
-            display={{ base: "block", md: "inline-flex" }}
-            fontSize={"xl"}
-            fontWeight={600}
-            color={"white"}
-            bg={"#0f0b06"}
-            href={"#"}
-            variant="outline"
-            onClick={() => navigate(`/login`)}
-            _hover={{
-              bg: "white",
-              color: "#0f0b06",
-              border: "1px solid black",
-            }}
+          <RouteLink
+            to="/cart"
+            style={{ color: "white", fontSize: "25px", fontWeight: "500" }}
+            href="/cart"
           >
-            Login
-          </Button>
+            Cart
+          </RouteLink>
+          <GiBatMask fontSize="30px" color="white" />
+          <Text
+            style={{ display: isAuth ? "block" : "none" }}
+            color="white"
+            fontSize="22px"
+          >
+            {batUser.name}
+          </Text>
+          {
+            <Flex style={{ display: isAuth ? "block" : "none" }}>
+              <Popover placement="bottom" isLazy>
+                <PopoverTrigger>
+                  <IconButton
+                    bg="black"
+                    color="white"
+                    fontSize="2xl"
+                    aria-label="More server options"
+                    icon={<BsPerson />}
+                    w="fit-content"
+                    _hover={{ bg: "#fbd309", color: "black" }}
+                  />
+                </PopoverTrigger>
+                <PopoverContent w="fit-content" _focus={{ boxShadow: "none" }}>
+                  <PopoverArrow />
+                  <PopoverBody bg="black">
+                    <Stack>
+                      <Button
+                        color="#fbd309"
+                        w="194px"
+                        variant="ghost"
+                        rightIcon={<CgProfile />}
+                        justifyContent="space-between"
+                        fontWeight="normal"
+                        colorScheme="yellow"
+                        fontSize="sm"
+                        _hover={{ bg: "#fbd309", color: "black" }}
+                      >
+                        {batUser.name}'s Profile
+                      </Button>
+                      <Button
+                        color="#fbd309"
+                        w="194px"
+                        variant="ghost"
+                        rightIcon={<FaDonate />}
+                        justifyContent="space-between"
+                        fontWeight="normal"
+                        colorScheme="yellow"
+                        fontSize="sm"
+                        _hover={{ bg: "#fbd309", color: "black" }}
+                      >
+                        Donate ?
+                      </Button>
+                      <Button
+                        color="#fbd309"
+                        w="194px"
+                        variant="ghost"
+                        rightIcon={<TbZoomMoney />}
+                        justifyContent="space-between"
+                        fontWeight="normal"
+                        colorScheme="yellow"
+                        fontSize="sm"
+                        _hover={{ bg: "#fbd309", color: "black" }}
+                      >
+                        Lucky Draw
+                      </Button>
+                      <Button
+                        onClick={logout}
+                        w="194px"
+                        variant="ghost"
+                        rightIcon={<AiOutlineLogout />}
+                        color="white"
+                        justifyContent="space-between"
+                        fontWeight="normal"
+                        fontSize="md"
+                        _hover={{ bg: "white", color: "black" }}
+                      >
+                        <b>Logout</b>
+                      </Button>
+                    </Stack>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
+            </Flex>
+          }
+          {
+            <Button
+              style={{ display: isAuth ? "none" : "block" }}
+              display={{ base: "block", md: "inline-flex" }}
+              fontSize={"xl"}
+              fontWeight={600}
+              color={"white"}
+              bg={"#0f0b06"}
+              href={"#"}
+              variant="outline"
+              onClick={() => navigate(`/login`)}
+              _hover={{
+                bg: "white",
+                color: "#0f0b06",
+                border: "1px solid black",
+              }}
+            >
+              Login
+            </Button>
+          }
         </Stack>
       </Flex>
 
@@ -124,9 +228,6 @@ export default function NavBar() {
 
 const DesktopNav = () => {
   const navigate = useNavigate();
-  // const linkColor = useColorModeValue("black", "gray.200");
-  // const linkHoverColor = useColorModeValue("gray.800", "white");
-  // const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
     <Stack display="flex" alignItems="center" direction={"row"} spacing={4}>
