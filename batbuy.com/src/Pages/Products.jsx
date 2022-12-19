@@ -51,7 +51,7 @@ const Products = () => {
   React.useEffect(() => {
     setLoader(true);
     let apiUrl = getUrl(
-      `https://crazy-dove-veil.cyclic.app/products?category=${category}&_page=${page}&_limit=${limit}`,
+      `http://localhost:8080/products?category=${category}&_page=${page}&_limit=${limit}`,
       sort,
       orderBy,
       filterBy
