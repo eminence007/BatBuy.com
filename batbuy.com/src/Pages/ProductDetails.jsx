@@ -66,7 +66,7 @@ export default function ProductDetails() {
   const handleProduct = () => {
     setLoader(true);
     axios
-      .get(`http://localhost:8080/products/${id}`)
+      .get(`https://crazy-dove-veil.cyclic.app/products/${id}`)
       .then((res) => {
         setProductDetails(res.data);
         setLoader(false);
@@ -106,11 +106,7 @@ export default function ProductDetails() {
             >
               {name}
             </Heading>
-            <Text
-              color="gray.900"
-              fontWeight={300}
-              fontSize={"2xl"}
-            >
+            <Text color="gray.900" fontWeight={300} fontSize={"2xl"}>
               ${price} USD
             </Text>
             <Rating ratings={ratings} />
@@ -119,11 +115,7 @@ export default function ProductDetails() {
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={"column"}
-            divider={
-              <StackDivider
-                borderColor="gray.200"
-              />
-            }
+            divider={<StackDivider borderColor="gray.200" />}
           >
             <VStack spacing={{ base: 4, sm: 6 }}>
               <Text fontSize={"lg"}>{details}</Text>

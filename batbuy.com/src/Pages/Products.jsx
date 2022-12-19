@@ -3,6 +3,7 @@ import { useParams, Link, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import ProductContainer from "../Components/Product/ProductContainer";
 import { Flex } from "@chakra-ui/react";
+import { Loader } from "../Components/Loader";
 
 const getCurrentPageUrl = (value) => {
   value = Number(value);
@@ -32,6 +33,7 @@ function getUrl(url, sort, orderBy, filterBy) {
 const Products = () => {
   let [searchParams, setSearchParams] = useSearchParams();
   const { category } = useParams();
+  const [loader, setLoader] = useState(false);
   const [data, setData] = React.useState([]);
   const [totalCount, setTotalCount] = React.useState(0);
   const [page, setPage] = React.useState(
@@ -47,8 +49,9 @@ const Products = () => {
   const [filterChange, setFilterChange] = useState({});
 
   React.useEffect(() => {
+    setLoader(true);
     let apiUrl = getUrl(
-      `http://localhost:8080/products?category=${category}&_page=${page}&_limit=${limit}`,
+      `https://crazy-dove-veil.cyclic.app/products?category=${category}&_page=${page}&_limit=${limit}`,
       sort,
       orderBy,
       filterBy
@@ -59,7 +62,8 @@ const Products = () => {
         setData(res.data);
         setTotalCount(res.headers["x-total-count"]);
       })
-      .catch((err) => console.log("err:", err));
+      .catch((err) => console.log("err:", err))
+      .finally(() => setLoader(false));
   }, [category, page, orderBy, filterBy, limit]);
 
   React.useEffect(() => {
@@ -84,7 +88,7 @@ const Products = () => {
   console.log(totalCount);
 
   const handleSortAndLimit = (val) => {
-    // setLoading(true);
+    setLoader(true);
 
     switch (val) {
       case "pr-htl":
@@ -131,41 +135,11 @@ const Products = () => {
         setLimit(12);
       }
     }
+    setLoader(false);
   };
 
-  // const handleLimit = (val) => {
-  //   switch (val) {
-  //     case "8pp":
-  //       {
-  //         setLimit(8);
-  //       }
-  //       break;
-
-  //     case "12pp":
-  //       {
-  //         setLimit(12);
-  //       }
-  //       break;
-
-  //     case "16pp":
-  //       {
-  //         setLimit(16);
-  //       }
-  //       break;
-
-  //     case "20pp":
-  //       {
-  //         setLimit(20);
-  //       }
-  //       break;
-
-  //     default: {
-  //       setLimit(8);
-  //     }
-  //   }
-  // };
-
   const handleFilterChange = (val1, val2) => {
+    setLoader(true);
     console.log("x", val1);
     console.log("y", val2);
     const add_filter = val1;
@@ -194,8 +168,10 @@ const Products = () => {
     }
     setFilterBy(filterStr);
     setFilterChange(obj);
+    setLoader(false);
   };
 
+  if (loader) return <Loader />;
   return (
     <>
       <Flex>

@@ -19,6 +19,7 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  MenuGroup,
   Input,
   InputGroup,
   InputRightElement,
@@ -102,6 +103,7 @@ export default function NavBar() {
             bg={"#0f0b06"}
             href={"#"}
             variant="outline"
+            onClick={() => navigate(`/login`)}
             _hover={{
               bg: "white",
               color: "#0f0b06",
@@ -121,29 +123,86 @@ export default function NavBar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("black", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
-  const popoverContentBgColor = useColorModeValue("white", "gray.800");
+  const navigate = useNavigate();
+  // const linkColor = useColorModeValue("black", "gray.200");
+  // const linkHoverColor = useColorModeValue("gray.800", "white");
+  // const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
     <Stack display="flex" alignItems="center" direction={"row"} spacing={4}>
-      <Menu>
+      <Menu w="100px">
         <MenuButton
           bg="#0f0b06"
           color="white"
+          colorScheme="#fbd309"
           fontSize="2xl"
+          borderRadius="0px"
           as={Button}
           leftIcon={<HamburgerIcon />}
           _hover={{ bg: "#0f0b06", color: "white" }}
         >
           MENU
         </MenuButton>
-        <MenuList>
-          <MenuItem>Download</MenuItem>
-          <MenuItem>Create a Copy</MenuItem>
-          <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
+
+        <MenuList bg="#0f0b06" color="#fbd309">
+          <MenuGroup color="white" bg="#0f0b06" title="Bat Categories">
+            <MenuItem
+              onClick={() => navigate(`/products/laptops`)}
+              bg="#0f0b06"
+              _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+            >
+              Laptops
+            </MenuItem>
+            <MenuItem
+              onClick={() => navigate(`/products/phones`)}
+              bg="#0f0b06"
+              _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+            >
+              Mobiles
+            </MenuItem>
+            <MenuItem
+              onClick={() => navigate(`/products/tv`)}
+              bg="#0f0b06"
+              _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+            >
+              TVs
+            </MenuItem>
+            <MenuItem
+              onClick={() => navigate(`/products/macbook`)}
+              bg="#0f0b06"
+              _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+            >
+              MacBooks
+            </MenuItem>
+            <MenuItem
+              onClick={() => navigate(`/products/speakers`)}
+              bg="#0f0b06"
+              _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+            >
+              Speakers
+            </MenuItem>
+            <MenuItem
+              onClick={() => navigate(`/products/gaming`)}
+              bg="#0f0b06"
+              _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+            >
+              Gaming Zone
+            </MenuItem>
+            <MenuItem
+              onClick={() => navigate(`/products/smartwatch`)}
+              bg="#0f0b06"
+              _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+            >
+              Watches
+            </MenuItem>
+            <MenuItem
+              onClick={() => navigate(`/products/excuisite`)}
+              bg="#0f0b06"
+              _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+            >
+              Excuisite Stuff
+            </MenuItem>
+          </MenuGroup>
         </MenuList>
       </Menu>
 
@@ -162,43 +221,6 @@ const DesktopNav = () => {
         </InputGroup>
       </Stack>
     </Stack>
-  );
-};
-
-const DesktopSubNav = ({ label, href, subLabel }) => {
-  return (
-    <Link
-      href={href}
-      role={"group"}
-      display={"block"}
-      p={2}
-      rounded={"md"}
-      _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
-    >
-      <Stack>
-        <Box>
-          {/* <Text
-            transition={"all .3s ease"}
-            _groupHover={{ color: "pink.400" }}
-            fontWeight={500}
-          >
-            {label}
-          </Text> */}
-          {/* <Text fontSize={"sm"}>{subLabel}</Text> */}
-        </Box>
-        {/* <Flex
-          transition={"all .3s ease"}
-          transform={"translateX(-10px)"}
-          opacity={0}
-          _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
-          justify={"flex-end"}
-          align={"center"}
-          flex={1}
-        >
-          <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
-        </Flex> */}
-      </Stack>
-    </Link>
   );
 };
 

@@ -32,15 +32,21 @@ function Rating({ ratings }) {
               <BsStarHalf color="#fbd309" key={i} style={{ marginLeft: "1" }} />
             );
           }
-          return (
-            <BsStar color="#fcde04" key={i} style={{ marginLeft: "1" }} />
-          );
+          return <BsStar color="#fcde04" key={i} style={{ marginLeft: "1" }} />;
         })}
     </Box>
   );
 }
 
-function ProductCardNew({ name, image, price, ratings, categories, id }) {
+function ProductCardNew({ item }) {
+  const { name, image, price, ratings, categories, id } = item;
+  const handleAddToCart = () => {
+    let obj = {
+      product: item,
+      quantity: 1
+    };
+    
+  };
   return (
     <Box>
       {/* <Divider mt={12} mb={12} /> */}
