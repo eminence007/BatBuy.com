@@ -60,7 +60,7 @@ const ProductContainer = ({
         gap={6}
       >
         {data.map((item) => {
-          return <ProductCardNew key={item.id} {...item} />;
+          return <ProductCardNew key={item.id} item={item} />;
         })}
       </Grid>
       <Pagination
