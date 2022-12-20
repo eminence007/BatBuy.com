@@ -10,7 +10,7 @@
   display: flex;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  min-width: 400px;
+  min-width: auto;
 }
 
 .pre-btn,

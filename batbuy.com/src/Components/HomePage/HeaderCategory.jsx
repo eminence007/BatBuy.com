@@ -1,4 +1,4 @@
-import { Flex, Grid, Stack, Text } from "@chakra-ui/react";
+import { Flex, Grid, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HeaderCategoryCards from "./HeaderCategoryCards";
@@ -56,7 +56,7 @@ const categories = [
   },
   {
     name: "PC Gaming",
-    category: "laptops",
+    category: "gaming",
     src: "https://64.media.tumblr.com/4a3442372d4e6b8ee599ac7c8e56f525/2b3911c97fb38392-5c/s2048x3072/2e5e14af4f8da4e34369e738cfa93634b5da3d99.pnj",
   },
   {
@@ -76,17 +76,17 @@ const categories = [
   },
   {
     name: "Apple MacBook",
-    category: "laptops",
+    category: "macbook",
     src: "https://images.macmerise.com/product/skins/greybatmanoverload1.jpg",
   },
   {
     name: "Apple iPhones",
-    category: "laptops",
+    category: "phones",
     src: "https://images.macmerise.com/product/lumous-led-case/ipc11mmsilhouettebatman1new.gif",
   },
   {
     name: "TVs & Projectors",
-    category: "laptops",
+    category: "tv",
     src: "https://64.media.tumblr.com/5f5fc0c7317e3b1e86c6604cae9f2333/85a7fd21c6d124cc-06/s640x960/7b7b41d40bcd687b3d0b096cec1fdd7efe611633.pnj",
   },
   {
@@ -105,7 +105,12 @@ export const HeaderCategory = () => {
         Shop deals by category
       </Text>
       <Grid
-        templateColumns="repeat(6, auto)"
+        templateColumns={{
+          base: "repeat(2, 1fr)",
+          sm: "repeat(2, 1fr)",
+          md: "repeat(4, 1fr)",
+          lg: "repeat(6, 1fr)",
+        }}
         justifyContent="space-around"
         alignItems="center"
         h="full"

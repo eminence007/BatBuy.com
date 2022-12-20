@@ -5,6 +5,12 @@ export const HeaderImage = () => {
   return (
     <Box paddingTop="80px" boxSize="full">
       <Image
+        h={{
+          base: "100%",
+          sm: "100%",
+          md: "100%",
+          lg: "100%",
+        }}
         src="https://www.redwolf.in/image/cache/catalog/banners/official-merch/batman-merchandise-india1-1920-1920x350.jpg"
         alt="Batman"
       />

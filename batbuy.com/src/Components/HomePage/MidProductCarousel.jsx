@@ -219,7 +219,7 @@ const MidProductCarousel = () => {
       <div ref={box} className="product-container">
         {products.map((el) => {
           return (
-            <ProductCard
+            <ProductCard 
               key={el.id}
               name={el.name}
               price={el.price}

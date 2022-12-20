@@ -43,7 +43,7 @@ function Rating({ rating }) {
 function ProductCard({ name, image, isNew, price, rating, id }) {
   const navigate = useNavigate();
   return (
-    <Box bg="#0f0b06" minWidth="25%">
+    <Box bg="#0f0b06" minWidth={{ base: "100%", md: "50%", lg: "25%" }}>
       {/* <Divider mt={12} mb={12} /> */}
       <Flex mt={17.5} w="full" alignItems="center" justifyContent="center">
         <Box

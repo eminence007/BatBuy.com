@@ -334,15 +334,14 @@ const MobileNav = () => {
       p={4}
       display={{ md: "none" }}
     >
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
+      <MobileNavItem />
     </Stack>
   );
 };
 
 const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
+  const navigate = useNavigate();
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
@@ -356,21 +355,68 @@ const MobileNavItem = ({ label, children, href }) => {
           textDecoration: "none",
         }}
       >
-        <Text
-          fontWeight={600}
-          color={useColorModeValue("gray.600", "gray.200")}
-        >
-          {label}
-        </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={"all .25s ease-in-out"}
-            transform={isOpen ? "rotate(180deg)" : ""}
-            w={6}
-            h={6}
-          />
-        )}
+        <Menu w="100px">
+          <MenuList bg="#0f0b06" color="#fbd309">
+            <MenuGroup color="white" bg="#0f0b06" title="Bat Categories">
+              <MenuItem
+                onClick={() => navigate(`/products/laptops`)}
+                bg="#0f0b06"
+                _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+              >
+                Laptops
+              </MenuItem>
+              <MenuItem
+                onClick={() => navigate(`/products/phones`)}
+                bg="#0f0b06"
+                _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+              >
+                Mobiles
+              </MenuItem>
+              <MenuItem
+                onClick={() => navigate(`/products/tv`)}
+                bg="#0f0b06"
+                _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+              >
+                TVs
+              </MenuItem>
+              <MenuItem
+                onClick={() => navigate(`/products/macbook`)}
+                bg="#0f0b06"
+                _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+              >
+                MacBooks
+              </MenuItem>
+              <MenuItem
+                onClick={() => navigate(`/products/speakers`)}
+                bg="#0f0b06"
+                _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+              >
+                Speakers
+              </MenuItem>
+              <MenuItem
+                onClick={() => navigate(`/products/gaming`)}
+                bg="#0f0b06"
+                _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+              >
+                Gaming Zone
+              </MenuItem>
+              <MenuItem
+                onClick={() => navigate(`/products/smartwatch`)}
+                bg="#0f0b06"
+                _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+              >
+                Watches
+              </MenuItem>
+              <MenuItem
+                onClick={() => navigate(`/products/excuisite`)}
+                bg="#0f0b06"
+                _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+              >
+                Excuisite Stuff
+              </MenuItem>
+            </MenuGroup>
+          </MenuList>
+        </Menu>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
@@ -382,12 +428,68 @@ const MobileNavItem = ({ label, children, href }) => {
           borderColor={useColorModeValue("gray.200", "gray.700")}
           align={"start"}
         >
-          {children &&
-            children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
-                {child.label}
-              </Link>
-            ))}
+          <Menu w="100px">
+            <MenuList bg="#0f0b06" color="#fbd309">
+              <MenuGroup color="white" bg="#0f0b06" title="Bat Categories">
+                <MenuItem
+                  onClick={() => navigate(`/products/laptops`)}
+                  bg="#0f0b06"
+                  _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+                >
+                  Laptops
+                </MenuItem>
+                <MenuItem
+                  onClick={() => navigate(`/products/phones`)}
+                  bg="#0f0b06"
+                  _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+                >
+                  Mobiles
+                </MenuItem>
+                <MenuItem
+                  onClick={() => navigate(`/products/tv`)}
+                  bg="#0f0b06"
+                  _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+                >
+                  TVs
+                </MenuItem>
+                <MenuItem
+                  onClick={() => navigate(`/products/macbook`)}
+                  bg="#0f0b06"
+                  _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+                >
+                  MacBooks
+                </MenuItem>
+                <MenuItem
+                  onClick={() => navigate(`/products/speakers`)}
+                  bg="#0f0b06"
+                  _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+                >
+                  Speakers
+                </MenuItem>
+                <MenuItem
+                  onClick={() => navigate(`/products/gaming`)}
+                  bg="#0f0b06"
+                  _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+                >
+                  Gaming Zone
+                </MenuItem>
+                <MenuItem
+                  onClick={() => navigate(`/products/smartwatch`)}
+                  bg="#0f0b06"
+                  _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+                >
+                  Watches
+                </MenuItem>
+                <MenuItem
+                  onClick={() => navigate(`/products/excuisite`)}
+                  bg="#0f0b06"
+                  _hover={{ bg: "#fbd309", color: "#0f0b06" }}
+                >
+                  Excuisite Stuff
+                </MenuItem>
+              </MenuGroup>
+            </MenuList>
+          </Menu>
         </Stack>
       </Collapse>
     </Stack>
