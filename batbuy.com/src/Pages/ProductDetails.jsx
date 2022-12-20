@@ -129,7 +129,7 @@ export default function ProductDetails() {
 
   if (loader) return <Loader />;
   return (
-    <Container maxW={"7xl"}>
+    <Container p="12" bg="#0f0b06" maxW={"full"}>
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
         spacing={{ base: 8, md: 10 }}
@@ -149,13 +149,14 @@ export default function ProductDetails() {
         <Stack spacing={{ base: 6, md: 10 }}>
           <Box as={"header"}>
             <Heading
+              color="white"
               lineHeight={1.1}
               fontWeight={600}
               fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
             >
               {name}
             </Heading>
-            <Text color="gray.900" fontWeight={300} fontSize={"2xl"}>
+            <Text color="white" fontWeight={300} fontSize={"2xl"}>
               ${price} USD
             </Text>
             <Rating ratings={ratings} />
@@ -167,12 +168,14 @@ export default function ProductDetails() {
             divider={<StackDivider borderColor="gray.200" />}
           >
             <VStack spacing={{ base: 4, sm: 6 }}>
-              <Text fontSize={"lg"}>{details}</Text>
+              <Text color="#fcde04" fontSize={"lg"}>
+                {details}
+              </Text>
             </VStack>
             <Box>
               <Text
                 fontSize={{ base: "16px", lg: "18px" }}
-                color="yellow.500"
+                color="white"
                 fontWeight={"500"}
                 textTransform={"uppercase"}
                 mb={"4"}
@@ -180,7 +183,11 @@ export default function ProductDetails() {
                 Features
               </Text>
 
-              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+              <SimpleGrid
+                color="#fcde04"
+                columns={{ base: 1, md: 2 }}
+                spacing={10}
+              >
                 <List spacing={2}>
                   <ListItem>Long Lasting Battery </ListItem>
                   <ListItem>Intel UHD Graphics</ListItem>{" "}
@@ -196,7 +203,7 @@ export default function ProductDetails() {
             <Box>
               <Text
                 fontSize={{ base: "16px", lg: "18px" }}
-                color="yellow.500"
+                color="white"
                 fontWeight={"500"}
                 textTransform={"uppercase"}
                 mb={"4"}
@@ -204,45 +211,45 @@ export default function ProductDetails() {
                 Product Details
               </Text>
 
-              <List spacing={2}>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+              <List color="#fcde04" spacing={2}>
+                <ListItem textTransform="capitalize">
+                  <Text color="white" as={"span"} fontWeight={"bold"}>
                     Brand:
                   </Text>{" "}
                   {brand}
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text color="white" as={"span"} fontWeight={"bold"}>
                     CPU Model:
                   </Text>{" "}
                   Intel Core i7-1250U CPU
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text color="white" as={"span"} fontWeight={"bold"}>
                     Graphics:
                   </Text>{" "}
                   Iris Xe Graphics
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text color="white" as={"span"} fontWeight={"bold"}>
                     Memory:
                   </Text>{" "}
                   16GB RAM, 1TB SSD
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text color="white" as={"span"} fontWeight={"bold"}>
                     Operating System:
                   </Text>{" "}
                   Windows 11 Pro
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text color="white" as={"span"} fontWeight={"bold"}>
                     Color:
                   </Text>{" "}
                   Tech Black with super matte finish on the body & mousepad
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
+                  <Text color="white" as={"span"} fontWeight={"bold"}>
                     Card Description:
                   </Text>{" "}
                   Integrated{" "}
@@ -252,14 +259,17 @@ export default function ProductDetails() {
           </Stack>
 
           <Button
-            onClick={handleAddToCart}
+            onClick={() => {
+              handleAddToCart();
+              navigate("/cart");
+            }}
             rounded={"none"}
             w={"full"}
             mt={8}
             size={"lg"}
             py={"7"}
-            bg="gray.900"
-            color="white"
+            bg="#fcde04"
+            color="black"
             textTransform={"uppercase"}
             _hover={{
               transform: "translateY(2px)",
@@ -270,8 +280,8 @@ export default function ProductDetails() {
           </Button>
 
           <Stack direction="row" alignItems="center" justifyContent={"center"}>
-            <MdLocalShipping />
-            <Text>2-3 business days delivery</Text>
+            <MdLocalShipping color="#fcde04" />
+            <Text color="#fcde04">2-3 business days delivery</Text>
           </Stack>
         </Stack>
       </SimpleGrid>
