@@ -76,7 +76,7 @@ export default function SignUp() {
           navigate("/login");
           toast({
             title: "Account created.",
-            description: "Woah, You are a Bat Member now!",
+            description: "Woah, You are a Bat Member now. Login to Explore!",
             status: "success",
             duration: 5000,
             isClosable: true,
@@ -115,7 +115,7 @@ export default function SignUp() {
       minH={"100vh"}
       align={"center"}
       justify={"center"}
-      bg="#fbd309"
+      bg="#e9e126"
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
@@ -182,7 +182,7 @@ export default function SignUp() {
                 />
                 <InputRightElement h={"full"}>
                   <Button
-                    bg="#fbd309"
+                    bg="#e9e126"
                     color="#0f0b06"
                     variant={"ghost"}
                     onClick={() =>
@@ -200,11 +200,11 @@ export default function SignUp() {
                 loadingText="Submitting"
                 variant="outline"
                 size="lg"
-                bg="#fbd309"
+                bg="#e9e126"
                 color="#0f0b06"
                 _hover={{
                   bg: "#0f0b06",
-                  color: "#fbd309",
+                  color: "#e9e126",
                 }}
               >
                 Sign up
@@ -213,7 +213,7 @@ export default function SignUp() {
             <Stack pt={6}>
               <Text align={"center"}>
                 Already a user?{" "}
-                <RouteLink style={{ color: "#fbd309" }} to="/login">
+                <RouteLink style={{ color: "#e9e126" }} to="/login">
                   Login
                 </RouteLink>
               </Text>

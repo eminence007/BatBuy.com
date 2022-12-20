@@ -9,6 +9,7 @@ import {
   Box,
   Button,
   Flex,
+  Heading,
   Image,
   Select,
   Text,
@@ -18,11 +19,11 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 let dollarIndianLocale = Intl.NumberFormat("en-IN");
-const ItemRow = ({ item, removeItem, changeQty }) => {
+const ItemRow = ({ item, removeProduct, changeQuantity, cartData }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
-  let { id, product, qty } = item;
-  let totalPrice = product.price * qty;
+  let { id, product, quantity } = item;
+  let totalPrice = product.price * quantity;
   return (
     <>
       <AlertDialog
@@ -33,7 +34,7 @@ const ItemRow = ({ item, removeItem, changeQty }) => {
         <AlertDialogOverlay>
           <AlertDialogContent>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Delete Item from Bag
+              Delete Product from Cart
             </AlertDialogHeader>
 
             <AlertDialogBody>
@@ -47,7 +48,7 @@ const ItemRow = ({ item, removeItem, changeQty }) => {
               <Button
                 colorScheme="red"
                 onClick={() => {
-                  removeItem(id);
+                  removeProduct(id);
                   onClose();
                 }}
                 ml={3}
@@ -58,6 +59,7 @@ const ItemRow = ({ item, removeItem, changeQty }) => {
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
+
       <Flex
         p={"10px"}
         alignItems={"center"}
@@ -66,24 +68,29 @@ const ItemRow = ({ item, removeItem, changeQty }) => {
         borderRadius={"lg"}
       >
         <Flex alignItems={"center"}>
-          <Box w={useBreakpointValue({ base: "100%", md: "70px" })}>
+          <Box w={useBreakpointValue({ base: "100%", md: "70%" })}>
             <Image src={product.image} w="100%" />
           </Box>
           <VStack
             lineHeight={"15px"}
             alignItems={"left"}
+            color="#fcde04"
             pl={useBreakpointValue({ base: "5px", md: "50px" })}
           >
-            <Text fontWeight={"bold"}>{product.brand}</Text>
+            <Text textTransform="capitalize" fontWeight={"bold"}>
+              {product.brand}
+            </Text>
             <Text noOfLines={1}>{product.desc}</Text>
             <Select
-              value={qty}
-              focusBorderColor="pink.400"
+              bg="#fcde04"
+              color="black"
+              value={quantity}
+              focusBorderColor="#fcde04"
               size={"xs"}
               w={"fit-content"}
               variant={"filled"}
               onChange={(e) => {
-                changeQty(id, e.target.value);
+                changeQuantity(id, e.target.value);
               }}
             >
               <option>1</option>
@@ -96,16 +103,16 @@ const ItemRow = ({ item, removeItem, changeQty }) => {
               <option>8</option>
             </Select>
             <Text>
-              Price: ₹{dollarIndianLocale.format(product.price)} / per unit
+              Price: ${dollarIndianLocale.format(product.price)} / per unit
             </Text>
           </VStack>
         </Flex>
         <VStack>
-          <Button colorScheme="pink" variant="ghost" onClick={onOpen}>
+          <Button colorScheme="yellow" variant="outline" onClick={onOpen}>
             <CloseIcon />
           </Button>
-          <Text fontWeight={"bold"}>
-            Total Price: ₹{dollarIndianLocale.format(totalPrice)}
+          <Text color="#fcde04" fontWeight={"bold"}>
+            Total Price: ${dollarIndianLocale.format(totalPrice)}
             /-
           </Text>
         </VStack>

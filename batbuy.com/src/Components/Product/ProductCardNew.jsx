@@ -7,10 +7,14 @@ import {
   useColorModeValue,
   Divider,
   Button,
+  useToast,
 } from "@chakra-ui/react";
+import { useContext } from "react";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthContext";
+import axios from "axios";
+let dollarIndianLocale = Intl.NumberFormat("en-IN");
 function Rating({ ratings }) {
   return (
     <Box display="flex" alignItems="center">
@@ -40,12 +44,50 @@ function Rating({ ratings }) {
 
 function ProductCardNew({ item }) {
   const { name, image, price, ratings, categories, id } = item;
+  const { batUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const toast = useToast();
   const handleAddToCart = () => {
     let obj = {
+      userId: batUser.id,
       product: item,
-      quantity: 1
+      quantity: 1,
     };
-    
+
+    if (batUser.id !== undefined) {
+      axios
+        .post(`http://localhost:8080/cart`, obj)
+        .then((res) => {
+          Promise.resolve(res);
+          console.log("res:", res);
+          toast({
+            title: "Item added To your cart",
+            description: "An item has been successfully added to your cart",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+          });
+        })
+        .catch((err) => {
+          Promise.reject(err);
+          toast({
+            title: "Kindly Login",
+            description: "Kindly login before adding any product in your cart",
+            status: "info",
+            duration: 4000,
+            isClosable: true,
+          });
+        });
+    } else {
+      toast({
+        title: "Error",
+        description: "Something went wrong try again letter",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+      navigate("/login");
+    }
   };
   return (
     <Box>
@@ -114,6 +156,7 @@ function ProductCardNew({ item }) {
           </Link>
           <Box>
             <Button
+              onClick={handleAddToCart}
               textAlign="center"
               mb="5"
               mx="1"

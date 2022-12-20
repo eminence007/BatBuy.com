@@ -1,6 +1,6 @@
-import AllRoutes from "./Components/AllRoutes";
 import Footer from "./Components/HomePage/Footer";
 import NavBar from "./Components/NavBar";
+import AllRoutes from "./Components/Routes/AllRoutes";
 import { Home } from "./Pages/Home";
 
 function App() {

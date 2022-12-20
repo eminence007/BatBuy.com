@@ -23,7 +23,7 @@ const AuthContextProvider = ({ children }) => {
           setIsAuth(true);
           localStorage.setItem("batUser", JSON.stringify(res.data));
           setBatUser(res.data);
-          navigate("/");
+          navigate("/cart");
           toast({
             title: "Login Successful",
             description: "You are now logged in, Explore our amazing Products",

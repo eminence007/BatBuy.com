@@ -15,14 +15,17 @@ import {
   VisuallyHidden,
   List,
   ListItem,
+  useToast,
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { MdLocalShipping } from "react-icons/md";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Loader } from "../Components/Loader";
+import { AuthContext } from "../Contexts/AuthContext";
+import { useContext } from "react";
 
 function Rating({ ratings }) {
   return (
@@ -57,6 +60,9 @@ export default function ProductDetails() {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState({});
   const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
+  const toast = useToast();
+  const { batUser } = useContext(AuthContext);
 
   useEffect(() => {
     handleProduct();
@@ -75,6 +81,49 @@ export default function ProductDetails() {
   };
 
   console.log(productDetails);
+
+  const handleAddToCart = () => {
+    let obj = {
+      userId: batUser.id,
+      product: productDetails,
+      quantity: 1,
+    };
+
+    if (batUser.id !== undefined) {
+      axios
+        .post(`http://localhost:8080/cart`, obj)
+        .then((res) => {
+          Promise.resolve(res);
+          console.log("res:", res);
+          toast({
+            title: "Item added To your cart",
+            description: "An item has been successfully added to your cart",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+          });
+        })
+        .catch((err) => {
+          Promise.reject(err);
+          toast({
+            title: "Kindly Login",
+            description: "Kindly login before adding any product in your cart",
+            status: "info",
+            duration: 4000,
+            isClosable: true,
+          });
+        });
+    } else {
+      toast({
+        title: "Error",
+        description: "Something went wrong try again letter",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+      navigate("/login");
+    }
+  };
 
   const { image, name, price, ratings, brand, details } = productDetails;
 
@@ -203,6 +252,7 @@ export default function ProductDetails() {
           </Stack>
 
           <Button
+            onClick={handleAddToCart}
             rounded={"none"}
             w={"full"}
             mt={8}

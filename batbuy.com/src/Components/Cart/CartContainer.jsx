@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Text, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import ItemRow from "./ItemRow";
 
-const CartContainer = ({ cartData, removeItem, changeQty }) => {
+const CartContainer = ({ cartData, removeProduct, changeQuantity }) => {
   return (
     <Box
       border={"1px solid #ddd"}
@@ -10,16 +10,17 @@ const CartContainer = ({ cartData, removeItem, changeQty }) => {
       w={useBreakpointValue({ base: "100%", md: "60%" })}
     >
       <Heading as="h3" size="lg">
-        Items
+        Products
       </Heading>
       <Flex direction={"column"} gap={"10px"}>
         {cartData.map((item) => {
           return (
             <ItemRow
               key={item.id}
+              cartData={cartData}
               item={item}
-              removeItem={removeItem}
-              changeQty={changeQty}
+              removeProduct={removeProduct}
+              changeQuantity={changeQuantity}
             />
           );
         })}

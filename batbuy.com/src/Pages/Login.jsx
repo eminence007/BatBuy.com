@@ -9,6 +9,7 @@ import {
   Link,
   Stack,
   Image,
+  Text,
 } from "@chakra-ui/react";
 import { Link as RouteLink, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -112,6 +113,14 @@ export default function Login() {
             >
               Login
             </Button>
+            <Stack pt={6}>
+              <Text align={"center"}>
+                Not a Bat Member yet?{" "}
+                <RouteLink style={{ color: "#e9e126" }} to="/signup">
+                  Sign Up
+                </RouteLink>
+              </Text>
+            </Stack>
           </Stack>
         </Stack>
       </Flex>
