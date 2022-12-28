@@ -10,7 +10,7 @@ Deployed Link -> https://batbuy-com.vercel.app/
 6. Axios
 ### Some Snippets of the Project
 
-#Landing Page
+# Landing Page
 <img width="948" alt="image" src="https://user-images.githubusercontent.com/110287987/209817644-430d918b-ef4d-479b-bf22-948a93704fdb.png">
 
 
