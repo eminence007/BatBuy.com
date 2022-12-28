@@ -16,6 +16,10 @@ Deployed Link -> https://batbuy-com.vercel.app/
 # Products
 <img width="948" alt="image" src="https://user-images.githubusercontent.com/110287987/209817956-1cbd5b1c-992d-4c05-a4af-be21c9f3b148.png">
 
+# Carousel
+<img width="949" alt="image" src="https://user-images.githubusercontent.com/110287987/209818338-54b9529f-90ed-4b80-82ae-0a1c16022c57.png">
+
+
 
 
 
