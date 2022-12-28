@@ -19,6 +19,14 @@ Deployed Link -> https://batbuy-com.vercel.app/
 # Carousel ⤵️
 <img width="949" alt="image" src="https://user-images.githubusercontent.com/110287987/209818338-54b9529f-90ed-4b80-82ae-0a1c16022c57.png">
 
+# Empty Cart ⤵️
+<img width="947" alt="image" src="https://user-images.githubusercontent.com/110287987/209818661-e8f277e4-f5a5-4770-8c70-f511f6d87cab.png">
+
+# Cart ⤵️
+<img width="947" alt="image" src="https://user-images.githubusercontent.com/110287987/209818961-2e28c2a1-8bca-42f1-819e-7c34e26ffcb7.png">
+
+
+
 
 
 
