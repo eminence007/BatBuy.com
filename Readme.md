@@ -13,5 +13,9 @@ Deployed Link -> https://batbuy-com.vercel.app/
 # Landing Page
 <img width="948" alt="image" src="https://user-images.githubusercontent.com/110287987/209817644-430d918b-ef4d-479b-bf22-948a93704fdb.png">
 
+# Products
+<img width="948" alt="image" src="https://user-images.githubusercontent.com/110287987/209817956-1cbd5b1c-992d-4c05-a4af-be21c9f3b148.png">
+
+
 
 
